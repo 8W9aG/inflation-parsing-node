@@ -1,2 +1,10 @@
 # parsing-node
+
 A node in the inflation blockchain used for parsing and verifying transactions.
+
+## Dependencies :globe_with_meridians:
+
+* [boost](https://www.boost.org/)
+* [cpp-httplib](https://github.com/yhirose/cpp-httplib)
+* [json](https://github.com/nlohmann/json)
+* [uriparser](https://github.com/uriparser/uriparser)

@@ -1,0 +1,9 @@
+[submodule "libraries/cpp-httplib"]
+	path = libraries/cpp-httplib
+	url = https://github.com/yhirose/cpp-httplib.git
+[submodule "libraries/json"]
+	path = libraries/json
+	url = https://github.com/nlohmann/json.git
+[submodule "libraries/uriparser"]
+	path = libraries/uriparser
+	url = https://github.com/uriparser/uriparser.git

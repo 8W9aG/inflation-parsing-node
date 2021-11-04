@@ -1,0 +1,11 @@
+set(BOOST_MAJOR 1)
+set(BOOST_MINOR 76)
+set(BOOST_PATCH 0)
+set(BOOST_VER_DOT "${BOOST_MAJOR}.${BOOST_MINOR}.${BOOST_PATCH}")
+set(URIPARSER_BUILD_TESTS OFF)
+set(URIPARSER_BUILD_DOCS OFF)
+
+find_package(Boost ${BOOST_VER_DOT})
+add_subdirectory(cpp-httplib)
+add_subdirectory(json)
+add_subdirectory(uriparser)

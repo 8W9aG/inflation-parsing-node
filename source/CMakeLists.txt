@@ -1,0 +1,18 @@
+add_executable(parsingnode
+    main.cpp
+    local_http_server.cpp
+    local_http_server.h
+    server.cpp
+    server.h
+    connection.cpp
+    connection.h
+    local_request.cpp
+    local_request.h
+    request_manager.h
+    request_manager.cpp)
+target_include_directories(parsingnode PUBLIC ${Boost_INCLUDE_DIR})
+target_link_libraries(parsingnode
+    ${Boost_LIBRARIES}
+    uriparser
+    httplib
+    nlohmann_json)
