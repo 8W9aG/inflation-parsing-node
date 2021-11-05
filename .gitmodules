@@ -13,3 +13,6 @@
 [submodule "libraries/tidy-html5"]
 	path = libraries/tidy-html5
 	url = https://github.com/htacg/tidy-html5.git
+[submodule "libraries/libsxg"]
+	path = libraries/libsxg
+	url = https://github.com/8W9aG/libsxg.git

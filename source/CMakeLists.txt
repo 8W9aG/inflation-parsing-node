@@ -25,7 +25,9 @@ add_executable(parsingnode
     sha256.h
     sha256.cpp
     clean_html.h
-    clean_html.cpp)
+    clean_html.cpp
+    sxg_parser.h
+    sxg_parser.cpp)
 target_include_directories(parsingnode PUBLIC ${Boost_INCLUDE_DIR})
 target_link_libraries(parsingnode
     ${Boost_LIBRARIES}
@@ -36,4 +38,5 @@ target_link_libraries(parsingnode
     ${OPENSSL_CRYPTO_LIBRARY}
     base64
     tidy-static
-    ${LIBXML2_LIBRARY})
+    ${LIBXML2_LIBRARY}
+    sxg_static)
