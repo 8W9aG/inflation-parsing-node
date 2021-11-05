@@ -1,13 +1,18 @@
+#pragma once
+
 #include <thread>
+#include <memory>
 
 #include <httplib.h>
+
+#include "request_manager.h"
 
 namespace inflation {
 namespace node {
 
 class LocalHttpServer {
 public:
-    LocalHttpServer(int port);
+    LocalHttpServer(int port, std::shared_ptr<RequestManager> request_manager);
     virtual ~LocalHttpServer();
     
     void join();

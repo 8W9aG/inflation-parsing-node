@@ -7,3 +7,6 @@
 [submodule "libraries/uriparser"]
 	path = libraries/uriparser
 	url = https://github.com/uriparser/uriparser.git
+[submodule "libraries/cpp-base64"]
+	path = libraries/cpp-base64
+	url = https://github.com/ReneNyffenegger/cpp-base64.git

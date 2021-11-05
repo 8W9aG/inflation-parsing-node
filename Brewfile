@@ -1,1 +1,2 @@
 brew "boost"
+brew "openssl"

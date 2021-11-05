@@ -7,9 +7,11 @@
 namespace inflation {
 namespace node {
 
-LocalHttpServer::LocalHttpServer(int port) : _thread(LocalHttpServer::run, this, port) {
-    _server.Post("/", [](const httplib::Request &request, httplib::Response &response, const httplib::ContentReader &content_reader) {
+LocalHttpServer::LocalHttpServer(int port, std::shared_ptr<RequestManager> request_manager) : _thread(LocalHttpServer::run, this, port) {
+    _server.Post("/", [request_manager](const httplib::Request &request, httplib::Response &response, const httplib::ContentReader &content_reader) {
+        std::cout << "Received request from local HTTP server" << std::endl;
         response.status = 200;
+        response.set_header("Access-Control-Allow-Origin", "*");
         std::string body;
         content_reader([&](const char *data, size_t data_length) {
             body.append(data, data_length);
@@ -17,6 +19,7 @@ LocalHttpServer::LocalHttpServer(int port) : _thread(LocalHttpServer::run, this,
         });
         nlohmann::json j = nlohmann::json::parse(body);
         auto p2 = j.get<local_request>();
+        request_manager->add_request(p2);
         return true;
     });
     _server.Options("/", [](const httplib::Request &request, httplib::Response &response) {
