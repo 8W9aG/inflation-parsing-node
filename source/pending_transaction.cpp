@@ -34,5 +34,9 @@ bool PendingTransaction::verify() const {
     return _products.size() > 0;
 }
 
+void PendingTransaction::sign() {
+    
+}
+
 }  // namespace node
 }  // namespace inflation

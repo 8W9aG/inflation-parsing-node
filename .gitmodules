@@ -16,3 +16,9 @@
 [submodule "libraries/libsxg"]
 	path = libraries/libsxg
 	url = https://github.com/8W9aG/libsxg.git
+[submodule "libraries/fastText"]
+	path = libraries/fastText
+	url = https://github.com/facebookresearch/fastText.git
+[submodule "libraries/IP2Location-C-Library"]
+	path = libraries/IP2Location-C-Library
+	url = https://github.com/chrislim2888/IP2Location-C-Library.git

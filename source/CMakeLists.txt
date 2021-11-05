@@ -27,8 +27,12 @@ add_executable(parsingnode
     clean_html.h
     clean_html.cpp
     sxg_parser.h
-    sxg_parser.cpp)
-target_include_directories(parsingnode PUBLIC ${Boost_INCLUDE_DIR})
+    sxg_parser.cpp
+    seen_product.h
+    seen_product.cpp
+    seen_product_factory.h
+    seen_product_factory.cpp)
+target_include_directories(parsingnode PUBLIC "${Boost_INCLUDE_DIR}" "${CMAKE_CURRENT_SOURCE_DIR}/../libraries/fastText/src")
 target_link_libraries(parsingnode
     ${Boost_LIBRARIES}
     uriparser
@@ -39,4 +43,6 @@ target_link_libraries(parsingnode
     base64
     tidy-static
     ${LIBXML2_LIBRARY}
-    sxg_static)
+    sxg_static
+    fasttext-static
+    ip2location)

@@ -12,3 +12,5 @@ A node in the inflation blockchain used for parsing and verifying transactions.
 * [tidy](https://www.html-tidy.org/developer/)
 * [libxml2](http://www.xmlsoft.org/)
 * [libsxg](https://github.com/google/libsxg/)
+* [fastText](https://fasttext.cc/)
+* [IP2Location](https://github.com/chrislim2888/IP2Location-C-Library)

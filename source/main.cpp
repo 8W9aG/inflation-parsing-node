@@ -4,6 +4,7 @@
 #include "server.h"
 #include "request_manager.h"
 #include "wallet.h"
+#include "seen_product_factory.h"
 
 int main(int argc, char *argv[]) {
     const auto wallet = inflation::node::generateWallet();

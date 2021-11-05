@@ -4,6 +4,8 @@
 #include <set>
 #include <string>
 
+#include <nlohmann/json.hpp>
+
 namespace inflation {
 namespace node {
 
@@ -65,6 +67,9 @@ struct ProductHasher {
         return h(product.uid);
     }
 };
+
+extern void to_json(nlohmann::json& j, const Product& p);
+extern void from_json(const nlohmann::json& j, Product& p);
 
 }  // namespace node
 }  // namespace inflation

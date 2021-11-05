@@ -21,7 +21,12 @@ add_subdirectory(json)
 add_subdirectory(uriparser)
 add_subdirectory(tidy-html5)
 add_subdirectory(libsxg)
-add_definitions(-DCPPHTTPLIB_OPENSSL_SUPPORT)
+add_subdirectory(fastText)
+add_definitions(-DCPPHTTPLIB_OPENSSL_SUPPORT -DJSON_HAS_CPP_17)
 add_library(base64 STATIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp-base64/base64.cpp")
 target_include_directories(base64 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp-base64")
 target_include_directories(tidy-static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tidy-html5/include")
+add_library(ip2location
+    "${CMAKE_CURRENT_SOURCE_DIR}/IP2Location-C-Library/libIP2Location/IP2Location.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/IP2Location-C-Library/libIP2Location/IP2Location.h")
+target_include_directories(ip2location PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/IP2Location-C-Library/libIP2Location/")

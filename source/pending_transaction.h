@@ -5,7 +5,7 @@
 
 #include <httplib.h>
 
-#include "product.h"
+#include "seen_product.h"
 
 namespace inflation {
 namespace node {
@@ -16,10 +16,11 @@ public:
     virtual ~PendingTransaction();
 
     bool verify() const;
+    void sign();
 private:
     const std::string _url;
     const std::string _body;
-    std::unordered_set<Product, ProductHasher> _products;
+    std::unordered_set<SeenProduct, SeenProductHasher> _products;
 };
 
 }  // namespace node
