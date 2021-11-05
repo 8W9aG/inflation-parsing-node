@@ -10,6 +10,7 @@
 #include <openssl/err.h>
 
 #include "hex.h"
+#include "sha256.h"
 
 namespace inflation {
 namespace node {
@@ -66,26 +67,14 @@ bool Wallet::verify(unsigned char *data, size_t data_length, const std::string &
 }
 
 std::optional<std::string> Wallet::sign(unsigned char *data, size_t data_length) {
-    unsigned char digest[EVP_MAX_MD_SIZE];
-    unsigned int digest_length = 0;
-    const EVP_MD *digest_alg = EVP_sha256();
-    EVP_MD_CTX* context = EVP_MD_CTX_new();
-    if (!EVP_DigestInit_ex(context, digest_alg, NULL)) {
-        EVP_MD_CTX_free(context);
+    auto hash_string = sha256(data, data_length);
+    if (!hash_string) {
         return std::nullopt;
     }
-    if (!EVP_DigestUpdate(context, data, data_length)) {
-        EVP_MD_CTX_free(context);
-        return std::nullopt;
-    }
-    if (!EVP_DigestFinal_ex(context, digest, &digest_length)) {
-        EVP_MD_CTX_free(context);
-        return std::nullopt;
-    }
+    auto digest = hexToBytes(hash_string.value());
     unsigned char *signature = (unsigned char *)malloc(sizeof(unsigned char) * RSA_size(_rsa));
     unsigned int signature_size = 0;
-    if (!RSA_sign(NID_sha256, digest, digest_length, signature, &signature_size, _rsa)) {
-        EVP_MD_CTX_free(context);
+    if (!RSA_sign(NID_sha256, (const unsigned char *)digest.data(), digest.size(), signature, &signature_size, _rsa)) {
         free(signature);
         return std::nullopt;
     }

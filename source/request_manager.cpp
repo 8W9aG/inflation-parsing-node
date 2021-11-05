@@ -8,6 +8,7 @@
 #include <chrono>
 
 #include "hex.h"
+#include "pending_transaction.h"
 
 namespace inflation {
 namespace node {
@@ -30,18 +31,6 @@ void RequestManager::add_request(const local_request &request) {
 
 void RequestManager::join() {
     _thread.join();
-}
-
-void RequestManager::parseHTML(const std::string &html) {
-    std::cout << html << std::endl;
-}
-
-void RequestManager::parseJSON(const std::string &json) {
-    std::cout << json << std::endl;
-}
-
-void RequestManager::parseSXG(const void *data, size_t data_length) {
-    std::cout << "SXG placeholder" << std::endl;
 }
 
 void RequestManager::makeRequest(const local_request &request) {
@@ -81,16 +70,8 @@ void RequestManager::makeRequest(const local_request &request) {
         // Perform HTTP request
         if (auto response = cli.Get(path.c_str(), headers)) {
             if (response->status == 200) {
-                const auto content_type = response->get_header_value("content-type");
-                if (content_type.find("text/html") != std::string::npos) {
-                    parseHTML(response->body);
-                } else if (content_type.find("application/json") != std::string::npos) {
-                    parseJSON(response->body);
-                } else if (content_type.find("application/signed-exchange") != std::string::npos) {
-                    parseSXG(response->body.data(), response->body.size());
-                } else {
-                    std::cout << "Unrecognised content type: " << content_type << std::endl;
-                }
+                std::shared_ptr<PendingTransaction> transaction = std::make_shared<PendingTransaction>(response, request.url);
+                // TODO: Send this to the server once verified
             }
         } else {
             std::cout << "Response Error: " << response.error() << std::endl;

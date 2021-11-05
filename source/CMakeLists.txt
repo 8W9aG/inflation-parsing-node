@@ -1,3 +1,4 @@
+find_package(LibXml2 REQUIRED)
 add_executable(parsingnode
     main.cpp
     local_http_server.cpp
@@ -13,7 +14,18 @@ add_executable(parsingnode
     wallet.h
     wallet.cpp
     hex.h
-    hex.cpp)
+    hex.cpp
+    pending_transaction.h
+    pending_transaction.cpp
+    parser.h
+    product.h
+    product.cpp
+    html_parser.h
+    html_parser.cpp
+    sha256.h
+    sha256.cpp
+    clean_html.h
+    clean_html.cpp)
 target_include_directories(parsingnode PUBLIC ${Boost_INCLUDE_DIR})
 target_link_libraries(parsingnode
     ${Boost_LIBRARIES}
@@ -22,4 +34,6 @@ target_link_libraries(parsingnode
     nlohmann_json
     ${OPENSSL_SSL_LIBRARY}
     ${OPENSSL_CRYPTO_LIBRARY}
-    base64)
+    base64
+    tidy-static
+    ${LIBXML2_LIBRARY})

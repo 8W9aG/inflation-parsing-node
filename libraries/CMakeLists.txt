@@ -9,9 +9,12 @@ set(OPENSSL_LIBRARIES "/opt/homebrew/opt/openssl@3/lib" CACHE STRING "OpenSSL Li
 
 find_package(Boost ${BOOST_VER_DOT})
 find_package(OpenSSL REQUIRED)
+find_package(LibXml2 REQUIRED)
 add_subdirectory(cpp-httplib)
 add_subdirectory(json)
 add_subdirectory(uriparser)
+add_subdirectory(tidy-html5)
 add_definitions(-DCPPHTTPLIB_OPENSSL_SUPPORT)
 add_library(base64 STATIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp-base64/base64.cpp")
 target_include_directories(base64 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/cpp-base64")
+target_include_directories(tidy-static PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/tidy-html5/include")

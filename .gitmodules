@@ -10,3 +10,6 @@
 [submodule "libraries/cpp-base64"]
 	path = libraries/cpp-base64
 	url = https://github.com/ReneNyffenegger/cpp-base64.git
+[submodule "libraries/tidy-html5"]
+	path = libraries/tidy-html5
+	url = https://github.com/htacg/tidy-html5.git

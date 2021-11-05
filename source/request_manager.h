@@ -28,9 +28,6 @@ private:
     
     static void run(RequestManager *request_manager);
     
-    void parseHTML(const std::string &html);
-    void parseJSON(const std::string &json);
-    void parseSXG(const void *data, size_t data_length);
     void makeRequest(const local_request &request);
     void embedWalletInRequest(httplib::Headers &headers, std::string &value, std::string &encryption_key);
 };

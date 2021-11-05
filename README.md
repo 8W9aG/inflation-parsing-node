@@ -9,3 +9,5 @@ A node in the inflation blockchain used for parsing and verifying transactions.
 * [json](https://github.com/nlohmann/json)
 * [uriparser](https://github.com/uriparser/uriparser)
 * [cpp-base64](https://github.com/ReneNyffenegger/cpp-base64.git)
+* [tidy](https://www.html-tidy.org/developer/)
+* [libxml2](http://www.xmlsoft.org/)
